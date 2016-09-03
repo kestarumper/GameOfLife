@@ -1,0 +1,16 @@
+.cell {
+    padding: 10px;
+}
+
+.cell:hover {
+    background-color: red;
+}
+
+#world {
+    border-spacing: 0px;
+    border-collapse: separate;
+}
+
+body {
+    margin: 0;
+}
