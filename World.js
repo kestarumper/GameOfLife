@@ -27,4 +27,20 @@ class World {
     getRows(){
         return this.worldGrid.getElementsByClassName('row');
     }
+
+    put(figure){
+        if(!(figure instanceof Figure)){
+            console.error(`${figure.constructor.name} is not a valid object.`);
+        }
+
+        for(let i = 0; i < figure.height; i++){
+            for(let j = 0; j < figure.rows[i].length; j++){
+                if(figure.rows[i][j] == "x"){
+                    this.getCells()[(figure.pos_y+i)*this.width + figure.pos_x + j].style.backgroundColor = "red";
+                    this.getCells()[(figure.pos_y+i)*this.width + figure.pos_x + j].setAttribute("alive","");
+                }
+            }
+        }
+
+    }
 }
