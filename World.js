@@ -3,6 +3,7 @@ class World {
         this.width = width;
         this.height = height;
         this.worldGrid = document.getElementById(tableId);
+        this.cellTable = [];
     }
 
     drawGrid(){
@@ -14,33 +15,51 @@ class World {
             this.worldGrid.appendChild(row);
 
             for (let j = 0; j < this.width; j++) {
-                let cell = new Cell(j);
-                row.appendChild(cell.getObj());
+                let cell = new Cell(j,i);
+                this.cellTable.push(cell);
+                row.appendChild(cell.getDOMObj());
             }
         }
     }
 
-    getCells(){
-        return this.worldGrid.getElementsByClassName('cell');
+    getCell(x,y){
+        return this.cellTable[y*this.width+x];
     }
 
-    getRows(){
-        return this.worldGrid.getElementsByClassName('row');
+    getCells(){
+        return this.cellTable;
     }
 
     put(figure){
         if(!(figure instanceof Figure)){
             console.error(`${figure.constructor.name} is not a valid object.`);
+        }else {
+            figure.render();
         }
+    }
 
-        for(let i = 0; i < figure.height; i++){
-            for(let j = 0; j < figure.rows[i].length; j++){
-                if(figure.rows[i][j] == "x"){
-                    this.getCells()[(figure.pos_y+i)*this.width + figure.pos_x + j].style.backgroundColor = "red";
-                    this.getCells()[(figure.pos_y+i)*this.width + figure.pos_x + j].setAttribute("alive","");
+    tick(){
+        for(let cell of this.getCells()){
+            if(cell.isAlive()){
+                for(let i = -1; i < 2; i++){
+                    for(let j = -1; j < 2; j++){
+                        let neighbour = this.getCell(cell.getPos().x+j, cell.getPos().y+i);
+                        if(neighbour != undefined){
+                            neighbour.checkNeighbours(this);
+                        }
+                    }
                 }
             }
         }
-
+        for(let cell of this.getCells()){
+            if(!cell.isAlive() && cell.aliveNeighbours == 3){
+                cell.makeAlive();
+            }
+            if(cell.isAlive() && (cell.aliveNeighbours != 2 && cell.aliveNeighbours != 3)){
+                cell.makeDead();
+            }
+            cell.setChecked(false);
+            cell.aliveNeighbours = 0;
+        }
     }
 }
