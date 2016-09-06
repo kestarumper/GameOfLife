@@ -1,8 +1,10 @@
 class Cell {
     constructor(id) {
         this.obj = document.createElement("td");
-        this.obj.id = `cell_${id}`;
-        this.obj.className = "cell";
+
+        this.getDOMObj().id = `cell_${id}`;
+        this.getDOMObj().className = "cell";
+        this.getDOMObj().setAttribute("dead","");
     }
 
     makeAlive(){
