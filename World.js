@@ -3,6 +3,7 @@ class World {
         this.width = width;
         this.height = height;
         this.worldGrid = document.getElementById(tableId);
+        this.cellTable = [];
     }
 
     drawGrid(){
@@ -15,17 +16,14 @@ class World {
 
             for (let j = 0; j < this.width; j++) {
                 let cell = new Cell(j);
-                row.appendChild(cell.getObj());
+                this.cellTable.push(cell);
+                row.appendChild(cell.getDOMObj());
             }
         }
     }
 
     getCells(){
-        return this.worldGrid.getElementsByClassName('cell');
-    }
-
-    getRows(){
-        return this.worldGrid.getElementsByClassName('row');
+        return this.cellTable;
     }
 
     put(figure){
@@ -36,8 +34,7 @@ class World {
         for(let i = 0; i < figure.height; i++){
             for(let j = 0; j < figure.rows[i].length; j++){
                 if(figure.rows[i][j] == "x"){
-                    this.getCells()[(figure.pos_y+i)*this.width + figure.pos_x + j].style.backgroundColor = "red";
-                    this.getCells()[(figure.pos_y+i)*this.width + figure.pos_x + j].setAttribute("alive","");
+                    this.getCells()[(figure.pos_y + i)*this.width + figure.pos_x + j].makeAlive();
                 }
             }
         }

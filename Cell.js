@@ -5,7 +5,19 @@ class Cell {
         this.obj.className = "cell";
     }
 
-    getObj(){
+    makeAlive(){
+        this.getDOMObj().style.backgroundColor = "red";
+        this.getDOMObj().removeAttribute("dead","");
+        this.getDOMObj().setAttribute("alive","");
+    }
+
+    makeDead(){
+        this.getDOMObj().style.backgroundColor = "white";
+        this.getDOMObj().removeAttribute("alive","");
+        this.getDOMObj().setAttribute("dead","");
+    }
+
+    getDOMObj(){
         return this.obj;
     }
 }
