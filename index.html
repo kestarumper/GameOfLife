@@ -6,6 +6,10 @@
         <link rel="stylesheet" type="text/css" href="theme.css">
     </head>
     <body>
+        <button onclick="interval = setInterval(function() {
+            world.tick();
+        }, 100);">Start</button>
+        <button onclick="clearTimeout(interval)">Stop</button>
         <table id="world">
 
         </table>
