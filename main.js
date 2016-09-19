@@ -15,6 +15,16 @@ let fountain6 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.
 let fountain7 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 30, 50);
 let fountain8 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 50, 30);
 let fountain9 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 30, 10);
+
+let fountain10 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 20+50, 20);
+let fountain11 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 40+50, 20);
+let fountain12 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 20+50, 40);
+let fountain13 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 40+50, 40);
+let fountain14 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 30+50, 30);
+let fountain15 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 10+50, 30);
+let fountain16 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 30+50, 50);
+let fountain17 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 50+50, 30);
+let fountain18 = new Figure(`x     x\n xx xx \n  x x  \nx     x\nxxx xxx`, world.getCells(), 30+50, 10);
 let acorn = new Figure(` x     \n   x   \nxx  xxx`, world.getCells(), 50, 40);
 
 
@@ -29,6 +39,15 @@ world.put(fountain6);
 world.put(fountain7);
 world.put(fountain8);
 world.put(fountain9);
+world.put(fountain10);
+world.put(fountain11);
+world.put(fountain12);
+world.put(fountain13);
+world.put(fountain14);
+world.put(fountain15);
+world.put(fountain16);
+world.put(fountain17);
+world.put(fountain18);
 //world.put(acorn);
 
 var interval = setInterval(function() {
